@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version='1.0.0'>
+	<default> <!--handle -->
+		<reference name='left'>
+			<block type="core/template" template="oralce_mod/index.phtml" />
+			<block type="poll/activePoll" name="left.poll">
+				<action method="setPollTemplate">
+					<template>poll/active.phtml</template>
+					<type>poll</type>
+				</action>
+				<action method="setPollTemplate">
+					<template>poll/result.phtml</template>
+					<type>results</type>
+				</action>
+			</block>
+		</reference>
+		<reference name="right">
+			<remove name="right.poll" />
+		</reference>
+	</default>
+	<catalog_product_view>
+		<reference name="root">
+			<action method="setTemplate">
+				<template>page/2columns-left.phtml</template>
+			</action>
+			<remove name="top.search" />
+			<remove name="top.menu" />
+		</reference>
+		<reference name="head">
+			<action method="removeItem">
+				<type>skin_css</type>
+				<name>css/styles.css</name>
+			</action>
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>css/jay_styles.css</name>
+			</action>
+		</reference>
+		<reference name="left">
+			<block type="core/template" name="contactForm" template="contacts/form.phtml" />
+		</reference>
+	</catalog_product_view>
+</layout>

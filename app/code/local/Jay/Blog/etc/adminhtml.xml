@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<menu>
+		<jay_blog>
+			<title>Jay Grid</title>
+			<sort_order>999</sort_order>
+			<action>adminhtml/index/</action>
+		</jay_blog>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<jay_blog>
+						<title>Jay Grid</title>
+						<sort_order>999</sort_order>
+						<action>adminhtml/index/</action>
+					</jay_blog>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+	</config>

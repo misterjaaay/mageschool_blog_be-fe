@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Jay_Blog>
+			<version>1.0.3</version>
+		</Jay_Blog>
+	</modules>
+	<global>
+		<resources>
+			<jay_blog_setup>
+				<setup>
+					<module>Jay_Blog</module>
+				</setup>
+			</jay_blog_setup>
+		</resources>
+		<helpers>
+			<jay_blog>
+				<class>Jay_Blog_Helper</class>
+			</jay_blog>
+		</helpers>
+		<blocks>
+			<jay_blog><!-- this is an alias -->
+				<class>Jay_Blog_Block</class>
+				<name>My Block</name>
+			</jay_blog>
+		</blocks>
+		<models>
+			<jay_blog>
+				<class>Jay_Blog_Model</class>
+				<resourceModel>jay_blog_resource</resourceModel>
+			</jay_blog>
+			<jay_blog_resource>
+				<class>Jay_Blog_Model_Resource</class>
+				<entities>
+					<posts>
+						<table>jay_blog_posts</table>
+					</posts>
+				</entities>
+			</jay_blog_resource>
+		</models>
+	</global>
+	<frontend>
+		<routers>
+			<jay_blog>
+				<use>standard</use>
+				<args>
+					<module>Jay_Blog</module>
+					<frontName>jayblog</frontName>
+				</args>
+			</jay_blog>
+		</routers>
+		<layout>
+			<updates>
+				<jay_blog> <!-- alias -->
+					<file>jay_blog.xml</file>
+				</jay_blog>
+			</updates>
+		</layout>
+		<events>
+			<sales_quote_add_item>
+				<observers>
+					<jay_blog>
+						<type>singletone</type>
+						<class>Jay_Blog_Model_Observer</class>
+						<method>doubleQty</method>
+					</jay_blog>
+				</observers>
+			</sales_quote_add_item>
+		</events>
+	</frontend>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<jay_blog before="Mage_Adminhtml">Jay_Blog_Adminhtml</jay_blog>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+</config>
